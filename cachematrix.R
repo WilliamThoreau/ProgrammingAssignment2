@@ -1,8 +1,12 @@
-##Below functions are used to create an object in which both a matrix and its inverse can be stored.
-##This is useful to save computation time when inverting matrices as we can then cache the inverse of a matrix in this object and retrieve the inverted matrix without computing it again.
+##Below functions are used to create an object in which both a matrix and its 
+##inverse can be stored.
+##This is useful to save computation time when inverting matrices as we can then
+##cache the inverse of a matrix in this object and retrieve the inverted matrix
+##without computing it again.
 
 
-## The first function, makeCacheMatrix creates this object, which is in fact a list containing a function to
+## The first function, makeCacheMatrix creates this object, which is in fact a 
+## list containing a function to
 ##	1) set the value of the matrix
 ##	2) get the value of the matrix
 ##	3) set the value of the inverted matrix
@@ -29,15 +33,18 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## The following function calculates the inverse of the matrix stored in the object created with the above function. 
-## However, it first checks to see if the inverse matrix has already been calculated. 
-## If so, it gets the inverted matrix from the cache (the inverse stored in the object) and skips the computation. 
-##Otherwise, it calculates the inverse of the matrix and sets the value of the inverted matrix in the cache via the setInverse function.
+## The following function calculates the inverse of the matrix stored in the 
+## object created with the above function. 
+## It first checks to see if the inverse matrix has already been calculated. 
+## If so, it gets the inverted matrix from the cache (the inverse stored in the
+## object) and skips the computation. 
+## Otherwise, it calculates the inverse of the matrix and sets the value of the
+## inverted matrix in the cache via the setInverse function.
 
 cacheSolve <- function(x, ...) {
 	## Get the value of the inverse matrix stored in the object
 	InvMat <- x$getInverse()
-	## Check if the inverse matrix was already computed or not (i.e. if it exists in the object)
+	## Check if the inverse matrix was already computed or not
 	if(!is.null(InvMat)) {## case the inverse exists in the object
 		## Display that the value is retrieved and display it
 		message("Getting cached data")
